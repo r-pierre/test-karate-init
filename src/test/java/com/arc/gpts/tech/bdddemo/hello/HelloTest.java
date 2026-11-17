@@ -14,7 +14,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @EnableWireMock
 class HelloTest {
 
-    private static final String FEATURES = "src/test/java/com/arc/gpts/tech/bdddemo/hello/";
+    private static final String ROOT_PATH = "src/test/java/com/arc/gpts/tech/bdddemo/hello/";
 
     @LocalServerPort
     private int port;
@@ -26,7 +26,7 @@ class HelloTest {
     // (InvalidPathException on ':'), so the features are referenced from the project root.
     @Karate.Test
     Karate hello() {
-        return Karate.run(FEATURES + "hello.feature", FEATURES + "wiremock.feature")
+        return Karate.run(ROOT_PATH + "person.feature", ROOT_PATH + "wiremock.feature")
                 .systemProperty("baseUrl", "http://localhost:" + port)
                 .systemProperty("wiremockUrl", wiremockUrl);
     }
